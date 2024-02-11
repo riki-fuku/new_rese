@@ -7,12 +7,14 @@
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+            ご登録いただきありがとうございます!<br>
+            始める前に、先ほどメールでお送りしたリンクをクリックして、メール アドレスを確認していただけますか?<br>
+            メールが届かない場合は、喜んで別のメールをお送りいたします。
         </div>
 
         @if (session('status') == 'verification-link-sent')
             <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+                登録時に入力されたEメールアドレスに新しい認証リンクが送信されました。
             </div>
         @endif
 
@@ -22,7 +24,7 @@
 
                 <div>
                     <x-button>
-                        {{ __('Resend Verification Email') }}
+                        確認メールを再送信
                     </x-button>
                 </div>
             </form>
@@ -30,9 +32,9 @@
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
 
-                <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    {{ __('Log Out') }}
-                </button>
+                <x-button type="submit">
+                    ログアウト
+                </x-button>
             </form>
         </div>
     </x-auth-card>

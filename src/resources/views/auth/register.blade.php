@@ -14,44 +14,43 @@
 
             <!-- Name -->
             <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                <div class="flex items-center">
+                    <i class="fas fa-user fa-2x mr-3"></i>
+                    <x-input id="name" class="block mt-1 w-full rounded-none border-x-0 border-t-0 border-b-2"
+                        type="text" name="name" :value="old('name')" placeholder="Username" required autofocus />
+                </div>
             </div>
 
             <!-- Email Address -->
             <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <div class="flex items-center">
+                    <i class="fas fa-envelope fa-2x mr-3"></i>
+                    <x-input id="email" class="block mt-1 w-full rounded-none border-x-0 border-t-0 border-b-2"
+                        type="email" name="email" :value="old('email')" placeholder="Email" required autofocus />
+                </div>
             </div>
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
+                <div class="flex items-center">
+                    <i class="fas fa-lock fa-2x mr-3"></i>
+                    <x-input id="password" class="block mt-1 w-full rounded-none border-x-0 border-t-0 border-b-2"
+                        type="password" name="password" placeholder="Password" required autocomplete="new-password" />
+                </div>
             </div>
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
+                <div class="flex items-center">
+                    <i class="fas fa-lock fa-2x mr-3"></i>
+                    <x-input id="password" class="block mt-1 w-full rounded-none border-x-0 border-t-0 border-b-2"
+                        type="password" name="password_confirmation" placeholder="Password確認用" required />
+                </div>
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
                 <x-button class="ml-4">
-                    {{ __('Register') }}
+                    登録
                 </x-button>
             </div>
         </form>

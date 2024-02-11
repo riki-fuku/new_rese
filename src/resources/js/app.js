@@ -8,9 +8,11 @@ Alpine.start();
 
 import { createApp } from 'vue';
 import ExampleComponent from './components/ExampleComponent.vue';
+import GuestMenuComponent from './components/GuestMenuComponent.vue';
 
 createApp({
     components: {
-        ExampleComponent
+        ExampleComponent,
+        GuestMenuComponent
     }
 }).mount('#app');
