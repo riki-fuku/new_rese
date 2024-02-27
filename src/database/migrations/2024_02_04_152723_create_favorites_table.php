@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShopAreasTable extends Migration
+class CreateFavoritesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateShopAreasTable extends Migration
      */
     public function up()
     {
-        Schema::create('shop_areas', function (Blueprint $table) {
+        Schema::create('favorites', function (Blueprint $table) {
             $table->id();
-            $table->string('area_name')->unique();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('shop_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('shop_id')->references('id')->on('shops');
         });
     }
 
@@ -27,6 +31,6 @@ class CreateShopAreasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop_areas');
+        Schema::dropIfExists('favorites');
     }
 }

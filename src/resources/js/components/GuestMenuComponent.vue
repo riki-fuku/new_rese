@@ -1,8 +1,12 @@
 <template>
     <!-- ハンバーガーメニュー -->
     <div id="app" class="fixed m-5" @click="toggleMenu()">
-        <div class="w-10 h-10 bg-blue-500 rounded text-white flex justify-center items-center">
-            <i class="fas fa-stream fa-lg"></i>
+        <div class="flex">
+            <div class="w-10 h-10 bg-blue-500 rounded text-white flex justify-center items-center">
+                <i class="fas fa-stream fa-lg"></i>
+            </div>
+
+            <span class="mx-5 text-2xl font-bold flex items-center text-blue-600">Rese</span>
         </div>
     </div>
 
