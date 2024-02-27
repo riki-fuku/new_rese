@@ -2,7 +2,7 @@
     <div class="pt-28 px-10">
         <form action="{{ route('shop.reservation') }}" method="post">
             @csrf
-            <table class="w-4/6 mx-auto p-4 text-left">
+            <table class="w-11/12 md:w-4/6 mx-auto p-4 text-left">
                 <x-confirm-tr :title="'Shop'" :name="'name'" :value="$request->name" />
                 <x-confirm-tr :title="'Date'" :name="'reservation_date'" :value="$request->reservation_date" />
                 <x-confirm-tr :title="'Time'" :name="'reservation_time'" :value="$request->reservation_time" />

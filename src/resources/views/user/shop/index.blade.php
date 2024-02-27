@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="h-28 bg-gray-100">
+    <div class="pt-24 md:pt-0 h30 md:h-28 bg-gray-100">
         <shop-search-component :areas="{{ json_encode($areas) }}" :genres="{{ json_encode($genres) }}"
             :area-id="{{ !empty($selectedArea) ? $selectedArea : 0 }}"
             :genre-id="{{ !empty($selectedGenre) ? $selectedGenre : 0 }}"

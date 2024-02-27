@@ -26394,7 +26394,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "flex justify-end z-0"
+  "class": "md:flex md:justify-end z-0"
 };
 var _hoisted_2 = {
   "class": "m-5 p-3 drop-shadow-lg rounded-xl bg-white"
@@ -26407,7 +26407,7 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 }, "All area", -1 /* HOISTED */);
 var _hoisted_5 = ["value"];
 var _hoisted_6 = {
-  "class": "inline px-2 border-r-2 border-gray-300"
+  "class": "inline px-2 md:border-r-2 md:border-gray-300"
 };
 var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "0",
@@ -26415,7 +26415,7 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 }, "All genre", -1 /* HOISTED */);
 var _hoisted_8 = ["value"];
 var _hoisted_9 = {
-  "class": "inline px-2"
+  "class": "mt-3 md:mt-0 md:inline px-2"
 };
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fas fa-search text-gray-200"

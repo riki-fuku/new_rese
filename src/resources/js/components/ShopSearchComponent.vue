@@ -1,7 +1,7 @@
 <template>
 
     <!-- 検索フォーム -->
-    <div class="flex justify-end z-0">
+    <div class="md:flex md:justify-end z-0">
         <div class="m-5 p-3 drop-shadow-lg rounded-xl bg-white">
             <div class="inline px-2 border-r-2 border-gray-300">
                 <select class="border-none" v-model="selectedArea">
@@ -10,14 +10,14 @@
                 </select>
             </div>
 
-            <div class="inline px-2 border-r-2 border-gray-300">
+            <div class="inline px-2 md:border-r-2 md:border-gray-300">
                 <select class="border-none" v-model="selectedGenre">
                     <option value="0" key="0">All genre</option>
                     <option v-for="(name, id) in genres" :value="id" :key="id">{{ name }}</option>
                 </select>
             </div>
 
-            <div class="inline px-2">
+            <div class="mt-3 md:mt-0 md:inline px-2">
                 <i class="fas fa-search text-gray-200"></i>
                 <input type="text" class="border-none" placeholder="Search..." v-model.lazy="searchWord">
             </div>
