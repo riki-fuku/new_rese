@@ -30,7 +30,6 @@ export default {
             .then(response => {
                 // 成功した場合はお気に入りフラグを反転
                 this.favoriteFlg = !this.favoriteFlg;
-                console.log(response.data);
             })
             .catch(error => {
                 // エラー処理

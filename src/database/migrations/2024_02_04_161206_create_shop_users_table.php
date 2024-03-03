@@ -16,15 +16,13 @@ class CreateShopUsersTable extends Migration
         Schema::create('shop_users', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
-            $table->unsignedBigInteger('shop_id');
+            $table->unsignedBigInteger('shop_id')->nullable();
             $table->string('email', 255)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('invalid_flag')->default(0);
             $table->rememberToken();
             $table->timestamps();
-
-            $table->foreign('shop_id')->references('id')->on('shops');
         });
     }
 

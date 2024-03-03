@@ -39,26 +39,23 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // 一般ユーザー認証
 require __DIR__ . '/auth.php';
 
-
 // 管理者ルート
 Route::prefix('admin')->name('admin.')->group(function () {
 
-    Route::get('/home', function () {
-        return view('admin.dashboard');
-    })->middleware(['auth:admin', 'verified'])->name('home');
+    // 管理者画面
+    require __DIR__ . '/admin.php';
 
     // 管理者認証
-    require __DIR__ . '/admin.php';
+    require __DIR__ . '/admin_auth.php';
 });
 
 
 // 店舗代表者ルート
 Route::prefix('agent')->name('agent.')->group(function () {
 
-    Route::get('/home', function () {
-        return view('agent.dashboard');
-    })->middleware(['auth:agent', 'verified'])->name('home');
+    // 管理者画面
+    require __DIR__ . '/agent.php';
 
     // 店舗代表者認証
-    require __DIR__ . '/agent.php';
+    require __DIR__ . '/agent_auth.php';
 });

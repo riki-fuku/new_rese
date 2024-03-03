@@ -14,25 +14,22 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+    {{-- アイコン --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
-        @include('layouts.admin_navigation')
-
-        <!-- Page Heading -->
-        <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
-            </div>
-        </header>
-
         <!-- Page Content -->
         <main>
             <div id="app">
-                {{ $slot }}
+                <admin-menu-component class="mx-2"></admin-menu-component>
+                <div class="w-11/12 mx-auto pb-10 sm:max-w-screen-xl">
+                    {{ $slot }}
+                </div>
             </div>
         </main>
     </div>

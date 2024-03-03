@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\EmailSendHistory;
+use App\Mail\SendNewsMail;
+use Mail;
+
+class SendEmailController extends Controller
+{
+    public function store(Request $request)
+    {
+        // 全一般ユーザー取得
+        $userEmailList = User::whereNotNull('email_verified_at')->pluck('email');
+
+        foreach ($userEmailList as $userEmail) {
+            // メール送信処理
+            Mail::to($userEmail)->send(new SendNewsMail($request));
+        }
+
+        // メール送信履歴登録
+        $emailSendHistory = new EmailSendHistory();
+        $emailSendHistory->send_user_id = $request->user_id;
+        $emailSendHistory->success_flag = 1;
+        $emailSendHistory->sent_datetime = now();
+        $emailSendHistory->user_type = EmailSendHistory::ADMIN_USER; // 管理者
+        $emailSendHistory->save();
+
+        return response()->json(['message' => 'メールを送信しました'], 200);
+    }
+}

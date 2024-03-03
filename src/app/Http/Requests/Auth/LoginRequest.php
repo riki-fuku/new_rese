@@ -45,19 +45,24 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
+        $credentials = $this->only('email', 'password');
+
         if ($this->is('admin/*')) {
             $guard = 'admin';
+            $credentials['invalid_flag'] = 1; // 有効フラグを確認する
         } elseif ($this->is('agent/*')) {
             $guard = 'agent';
+            $credentials['invalid_flag'] = 1; // 有効フラグを確認する
         } else {
             $guard = 'web';
         }
 
-        if (!Auth::guard($guard)->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+
+        if (!Auth::guard($guard)->attempt($credentials, $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'email' => trans('ユーザー名またはパスワードが違います。'),
             ]);
         }
 

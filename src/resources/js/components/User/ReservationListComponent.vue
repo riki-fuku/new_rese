@@ -1,12 +1,11 @@
 <template>
 
     <div>
-        <div v-for="(reservationShop, index) in this.reservationShops"
-            :class="{
-                'bg-blue-700 text-white': reservationShop.status == '1',
-                'bg-blue-400 text-white': reservationShop.status == '2',
-                'bg-green-500 text-white': reservationShop.status == '3',
-            }" class="mb-5 py-8 px-8 rounded-lg shadow-xl">
+        <div v-for="(reservationShop, index) in this.reservationShops" :class="{
+            'bg-blue-700 text-white': reservationShop.status == '1',
+            'bg-blue-400 text-white': reservationShop.status == '2',
+            'bg-green-500 text-white': reservationShop.status == '3',
+        }" class="mb-5 py-8 px-8 rounded-lg shadow-xl">
             <div class="flex justify-between">
                 <div>
                     <div>
@@ -30,12 +29,14 @@
                         </a>
 
                         <!-- 削除 -->
-                        <i class="fas fa-times-circle fa-lg" @click="deleteReservationShop(reservationShop.id, reservationShop.shop.name)"></i>
+                        <i class="fas fa-times-circle fa-lg"
+                            @click="deleteReservationShop(reservationShop.id, reservationShop.shop.name)"></i>
                     </div>
 
                     <!-- 決済完了のみ表示 -->
                     <div :class="{ 'hidden': reservationShop.status != '3' }">
-                        <i class="fas fa-star fa-lg" @click="openRating(reservationShop.id, reservationShop.shop_id, reservationShop.user_id)"></i>
+                        <i class="fas fa-star fa-lg"
+                            @click="openRating(reservationShop.id, reservationShop.shop_id, reservationShop.user_id)"></i>
                     </div>
                 </div>
             </div>
@@ -66,7 +67,8 @@
     <!-- 評価モーダル -->
     <div v-if="showModal" class="fixed z-10 inset-0 overflow-y-auto">
         <div class="flex items-end justify-center min-h-screen">
-            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div
+                class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
 
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <!-- モーダルの内容 -->
@@ -75,8 +77,9 @@
                     </h3>
                     <div class="mx-auto w-1/2 flex place-content-evenly">
                         <div v-for="i in 5" :key="i" class="inline-block">
-                            <input type="radio" :id="`rating${i}`" name="rating" :value="i" class="hidden"/>
-                            <label :for="`rating${i}`" @click="changeRating(i)" :class="{ 'text-yellow-300': i <= rating }">
+                            <input type="radio" :id="`rating${i}`" name="rating" :value="i" class="hidden" />
+                            <label :for="`rating${i}`" @click="changeRating(i)"
+                                :class="{ 'text-yellow-300': i <= rating }">
                                 <i class="fas fa-star fa-2x"></i>
                             </label>
                         </div>
@@ -84,10 +87,12 @@
                 </div>
 
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <button @click="showModal = false" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                    <button @click="showModal = false"
+                        class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                         閉じる
                     </button>
-                    <button @click="submitRating()" class="mt-3 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                    <button @click="submitRating()"
+                        class="mt-3 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                         送信
                     </button>
                 </div>
@@ -124,7 +129,7 @@ export default {
             });
         },
         deleteReservationShop(shopReservationId, reservationName) {
-            if (confirm(`${ reservationName }の予約をキャンセルしますか？`)) {
+            if (confirm(`${reservationName}の予約をキャンセルしますか？`)) {
                 axios.delete(`/api/reservations/${shopReservationId}`, {
                     headers: {
                         'id': shopReservationId,

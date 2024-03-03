@@ -17,15 +17,12 @@ class CreateEmailSendHistoriesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('send_user_id')->nullable();
             $table->unsignedBigInteger('send_shop_id')->nullable();
-            $table->unsignedBigInteger('email_template_id');
+            $table->unsignedBigInteger('email_template_id')->nullable();
             $table->timestamp('sent_datetime');
             $table->tinyInteger('success_flag')->comment('0:失敗,1:成功');
             $table->text('error_message')->nullable();
             $table->string('user_type', 10)->comment('1:管理者、2:店舗代表者');
             $table->timestamps();
-
-            $table->foreign('send_user_id')->references('id')->on('users');
-            $table->foreign('send_shop_id')->references('id')->on('shops');
         });
     }
 
