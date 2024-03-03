@@ -15,34 +15,17 @@ use App\Http\Controllers\User\MypageController;
 |
 */
 
+//一般ユーザー
 // 一般ユーザールート
-Route::middleware(['auth', 'verified'])->group(function () {
-
-    // 店舗
-    Route::get('/home', [ShopController::class, 'index'])->name('home');
-    Route::get('/search', [ShopController::class, 'search'])->name('search');
-    Route::prefix('/shop')->name('shop.')->group(function () {
-        Route::get('/detail/{id}', [ShopController::class, 'detail'])->name('detail');
-        Route::post('/', [ShopController::class, 'confirm'])->name('confirm');
-        Route::post('/store', [ShopController::class, 'store'])->name('reservation');
-        Route::get('/edit/{reservationId}', [ShopController::class, 'edit'])->name('edit');
-        Route::post('/update/confirm', [ShopController::class, 'updateConfirm'])->name('update_confirm');
-        Route::post('/update', [ShopController::class, 'update'])->name('update');
-        Route::get('/complete', [ShopController::class, 'complete'])->name('complete'); // 共通完了画面
-    });
-
-    Route::prefix('/mypage')->name('mypage.')->group(function () {
-        Route::get('/', [MypageController::class, 'index'])->name('index');
-    });
-});
+require __DIR__ . '/user.php';
 
 // 一般ユーザー認証
 require __DIR__ . '/auth.php';
 
-// 管理者ルート
+// 管理者
 Route::prefix('admin')->name('admin.')->group(function () {
 
-    // 管理者画面
+    // 管理者ルート
     require __DIR__ . '/admin.php';
 
     // 管理者認証
@@ -50,10 +33,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 
-// 店舗代表者ルート
+// 店舗代表者
 Route::prefix('agent')->name('agent.')->group(function () {
 
-    // 管理者画面
+    // 店舗代表者ルート
     require __DIR__ . '/agent.php';
 
     // 店舗代表者認証

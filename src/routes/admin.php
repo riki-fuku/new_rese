@@ -5,8 +5,10 @@ use App\Http\Controllers\Admin\ManagementAgentController;
 use App\Http\Controllers\Admin\MailController;
 use Illuminate\Support\Facades\Route;
 
+// 管理者ルート
 Route::middleware(['auth:admin'])->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    // Home
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
     // 店舗代表者関連
     Route::prefix('management_agent')->name('management_agent.')->group(function () {
