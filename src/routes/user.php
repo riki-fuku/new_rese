@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\ShopController;
 use App\Http\Controllers\User\MypageController;
+use App\Http\Controllers\User\PaymentController;
 
 // 一般ユーザールート
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -22,5 +23,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Mypage
     Route::prefix('/mypage')->name('mypage.')->group(function () {
         Route::get('/', [MypageController::class, 'index'])->name('index');
+        // 予約QRコード表示画面
+        Route::get('/qr_code/{reservationId}', [MypageController::class, 'qrCode'])->name('qr_code');
+    });
+
+    // 決済画面
+    Route::prefix('/payment')->name('payment.')->group(function () {
+        Route::get('/{shopId}', [PaymentController::class, 'index'])->name('index');
+        Route::post('/store', [PaymentController::class, 'store'])->name('store');
     });
 });

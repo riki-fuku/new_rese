@@ -24,7 +24,7 @@
         <div class="mt-48 text-center flex justify-center items-center">
             <ul class="text-green-500 text-2xl">
                 <li class="my-8">
-                    <a href="/admin/home">Home</a>
+                    <a href="/agent">Home</a>
                 </li>
                 <li class="my-8">
                     <form method="POST" action="/agent/logout">

@@ -31,4 +31,20 @@ class ReservationController extends Controller
         $reservation->save();
         return response()->json($reservation);
     }
+
+    public function detail($reservationId)
+    {
+        $reservation = Reservation::with('shop', 'user')->find($reservationId);
+        return response()->json($reservation);
+    }
+
+    public function visited(Request $request)
+    {
+        $id = $request->reservation_id;
+        $reservation = Reservation::find($id);
+        // statusを来店済(2)に変更
+        $reservation->status = Reservation::VISITED;
+        $reservation->save();
+        return response()->json($reservation);
+    }
 }

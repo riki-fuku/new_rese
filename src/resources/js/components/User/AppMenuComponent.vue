@@ -2,7 +2,8 @@
     <!-- ハンバーガーメニュー -->
     <div class="fixed m-10">
         <div class="flex">
-            <div class="w-10 h-10 bg-blue-500 rounded text-white flex justify-center items-center" @click="toggleMenu()">
+            <div class="w-10 h-10 bg-blue-500 rounded text-white flex justify-center items-center"
+                @click="toggleMenu()">
                 <i class="fas fa-stream fa-lg"></i>
             </div>
 
@@ -23,7 +24,7 @@
         <div class="mt-48 text-center flex justify-center items-center">
             <ul class="text-blue-600 text-2xl">
                 <li class="my-8">
-                    <a href="/home">Home</a>
+                    <a href="/">Home</a>
                 </li>
                 <li class="my-8">
                     <form method="POST" action="/logout">
@@ -42,46 +43,46 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                showMenu: false,
-                isTop: true, //画面が一番上にあるかどうかを示すフラグ
-                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            }
-        },
-        methods: {
-            toggleMenu() {
-                this.showMenu = !this.showMenu;
-            },
-            logout(event) {
-                event.target.closest('form').submit();
-            },
-            checkScroll() { //スクロール位置をチェックするメソッド
-                this.isTop = window.scrollY === 0;
-            }
-        },
-        mounted() { // コンポーネントがマウントされたときにイベントリスナーを設定
-            window.addEventListener('scroll', this.checkScroll);
-        },
-        beforeDestroy() { // コンポーネントが破棄される前にイベントリスナーを削除
-            window.removeEventListener('scroll', this.checkScroll);
+export default {
+    data() {
+        return {
+            showMenu: false,
+            isTop: true, //画面が一番上にあるかどうかを示すフラグ
+            csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         }
+    },
+    methods: {
+        toggleMenu() {
+            this.showMenu = !this.showMenu;
+        },
+        logout(event) {
+            event.target.closest('form').submit();
+        },
+        checkScroll() { //スクロール位置をチェックするメソッド
+            this.isTop = window.scrollY === 0;
+        }
+    },
+    mounted() { // コンポーネントがマウントされたときにイベントリスナーを設定
+        window.addEventListener('scroll', this.checkScroll);
+    },
+    beforeDestroy() { // コンポーネントが破棄される前にイベントリスナーを削除
+        window.removeEventListener('scroll', this.checkScroll);
     }
+}
 </script>
 
 <style>
-    .slide-fade-enter-active {
-        transition: all 0.3s ease-out;
-    }
+.slide-fade-enter-active {
+    transition: all 0.3s ease-out;
+}
 
-    .slide-fade-leave-active {
-        transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
-    }
+.slide-fade-leave-active {
+    transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
 
-    .slide-fade-enter-from,
-    .slide-fade-leave-to {
-        transform: translateX(20px);
-        opacity: 0;
-    }
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    transform: translateX(20px);
+    opacity: 0;
+}
 </style>

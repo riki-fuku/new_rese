@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\ShopController;
-use App\Http\Controllers\User\MypageController;
 
 /*
 |--------------------------------------------------------------------------

@@ -10,7 +10,7 @@ class EmailSendHistory extends Model
     use HasFactory;
 
     const ADMIN_USER = 1;
-    const SHOP_USER = 2;
+    const AGENT_USER = 2;
 
     protected $fillable = [
         'success_flag',

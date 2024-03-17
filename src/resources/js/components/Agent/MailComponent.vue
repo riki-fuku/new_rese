@@ -94,11 +94,15 @@ export default {
         userId: {
             type: Number,
             required: true
+        },
+        shopId: {
+            type: Number,
+            required: true
         }
     },
     data() {
         return {
-            userType: '1', // 1:管理者
+            userType: '2', // 2:店舗代表者
             emailTemplateList: [],
             emailTemplateId: '',
             emailSubject: {
@@ -171,8 +175,9 @@ export default {
             // バリデーションチェック
             if (this.validateEmail()) {
                 // バリデーションOKの場合、登録処理を実行
-                axios.post('/api/admin/send_email', {
+                axios.post('/api/agent/send_email', {
                     user_id: this.userId,
+                    shop_id: this.shopId,
                     email_template_id: this.emailTemplateId,
                     subject: this.emailSubject.value,
                     body: this.emailBody.value

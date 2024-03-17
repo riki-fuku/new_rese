@@ -19,7 +19,7 @@
                     <!-- 予約済のみ表示 -->
                     <div :class="{ 'hidden': reservationShop.status != '1' }">
                         <!-- QRコード提示 -->
-                        <a :href="`/shop/qr/${reservationShop.id}`">
+                        <a :href="`/mypage/qr_code/${reservationShop.id}`">
                             <i class="fas fa-qrcode fa-lg mr-3"></i>
                         </a>
 
